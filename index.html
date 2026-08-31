@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vezilica — ručni vez portreta na tilu</title>
+<link rel="stylesheet" href="_ds/organic-3ba02c43-f29f-4d43-a84d-8827018ee00e/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&amp;family=Inter:wght@400;500;600&amp;family=Figtree:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: "Inter", system-ui, sans-serif; font-weight: 400; }
+  .tag, .btn, .input, label, button, input { font-family: "Inter", system-ui, sans-serif; }
+  a { color: var(--color-accent-700); text-decoration: none; }
+  a:hover { color: var(--color-accent-600); }
+  h1, h2, h3 { font-family: "Lora", Georgia, serif; font-weight: 700; margin: 0; line-height: 1.15; }
+  [data-mbr] { display: inline; }
+  p, li, span, a, div, label, input, button { font-family: "Inter", system-ui, sans-serif; }
+  p { margin: 0; font-weight: 400; }
+  footer a:hover span, header nav a:not(.btn):hover { color: var(--color-accent-700); }
+  [data-lightbox][hidden] { display: none !important; }
+  @media (max-width: 480px) {
+    #narucivanje h2 { font-size: 30px !important; line-height: 1.2 !important; max-width: 16ch !important; text-wrap: balance; }
+    [data-lightbox] { padding: 16px !important; }
+    [data-lightbox] img { max-width: calc(100vw - 32px) !important; max-height: 70vh !important; margin: 0 auto !important; }
+    #radovi image-slot { height: 320px !important; }
+    #pocetak image-slot { height: 320px !important; }
+    #porudzbine image-slot { height: 320px !important; }
+    #pocetak > div:last-child { width: 100% !important; max-width: 300px !important; justify-self: center !important; }
+    #o-meni > div:first-child { width: 100% !important; max-width: 280px !important; justify-self: center !important; }
+    #radovi article { min-width: 0; }
+    #radovi article > div { width: 100%; max-width: 300px; margin-left: auto; margin-right: auto; }
+    #porudzbine .washed { width: 100%; max-width: 100%; margin-left: auto; margin-right: auto; }
+    #porudzbine { padding-left: 8px !important; padding-right: 8px !important; }
+    #porudzbine > div { padding: 24px 16px !important; }
+    #radovi > div > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+    #pocetak h1 { max-width: none !important; font-size: 40px !important; line-height: 1.15 !important; text-wrap: normal !important; white-space: normal !important; }
+    footer > div:first-child { grid-template-columns: 1fr !important; gap: 26px !important; padding: 34px 24px 20px !important; justify-items: start !important; text-align: left !important; }
+    footer > div:last-child { padding: 0 24px 26px !important; }
+    footer > div:first-child > div:first-child p, footer > div:last-child p { font-size: 13px !important; }
+    footer > div:first-child > div:nth-child(2) > p, footer > div:first-child > div:nth-child(3) > p { font-size: 16px !important; }
+    footer a { font-size: 14px !important; }
+    footer a span { font-size: inherit !important; }
+    footer img { height: 40px !important; }
+    footer > div:first-child > div:first-child span { font-size: 18px !important; }
+    footer > div:first-child > div:nth-child(2) { gap: 10px !important; }
+    footer > div:first-child > div:nth-child(3) { display: none !important; }
+    header > div { padding: 10px 20px !important; gap: 8px !important; row-gap: 10px !important; }
+    header a[href="#pocetak"] { gap: 4px !important; }
+    header a[href="#pocetak"] img { height: 42px !important; }
+    [data-brand] { font-size: 18px !important; margin-left: -4px; }
+    [data-burger] { display: flex !important; }
+    header nav[data-open="0"] { display: none !important; }
+    header nav { width: 100% !important; margin-left: 0 !important; flex-direction: column !important; align-items: stretch !important; gap: 10px !important; font-size: 13px !important; padding: 6px 0 4px !important; }
+    header nav a.btn { font-size: 12px !important; padding: 8px 14px !important; text-align: center; }
+    p { font-size: 15px !important; line-height: 1.6 !important; text-wrap: pretty; hyphens: none; }
+    #pocetak > div > p { font-size: 16px !important; line-height: 1.65 !important; max-width: 34ch !important; text-wrap: balance !important; }
+    #pocetak > div > p + p { margin-top: 14px !important; }
+    [data-stats] { justify-content: center !important; text-align: center !important; gap: 14px !important; padding: 16px 14px !important; margin-top: 34px !important; width: 100% !important; flex-wrap: nowrap !important; align-items: stretch !important; }
+    [data-stats] > div { flex: 1 1 0; min-width: 0; align-items: center !important; text-align: center !important; }
+    [data-stats] > div:not([style*="width: 1px"]) > div:first-child { font-size: 20px !important; }
+    [data-stats] > div:not([style*="width: 1px"]) > div:last-child { font-size: 11px !important; line-height: 1.35 !important; }
+    [data-stats] > div[style*="width: 1px"] { flex: 0 0 1px; }
+    [data-fmt] { font-size: 10px !important; padding: 10px 14px !important; }
+    [data-fmt] span span:first-child { font-size: 10px !important; }
+    [data-fmt] span span:last-child { font-size: 9px !important; }
+    [data-fmt] > span:last-child { font-size: 12px !important; }
+  }
+</style>
+</head>
+<body>
+<div style="background: var(--color-bg); overflow-x: hidden">
+
+  <header style="position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--color-divider)">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap">
+      <a href="#pocetak" style="display: flex; align-items: center; gap: 12px; flex: 0 0 auto">
+        <img src="logossss-03-mtbx4o7a-21ww.png" alt="Vezilica" style="height: 54px; width: auto; display: block; margin-left: -7px">
+        <span data-brand style="font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 20px; color: var(--color-text)">Vez<span style="font-family: 'Lora', Georgia, serif; font-weight: 700; color: var(--color-accent)">i</span>lica</span>
+      </a>
+      <button type="button" data-burger aria-label="Meni" style="margin-left: auto; display: none; flex-direction: column; justify-content: center; gap: 5px; width: 42px; height: 42px; padding: 0 9px; border: 1px solid var(--color-divider); border-radius: 999px; background: transparent; cursor: pointer">
+        <span style="display: block; height: 2px; background: var(--color-text); border-radius: 2px"></span>
+        <span style="display: block; height: 2px; background: var(--color-text); border-radius: 2px"></span>
+        <span style="display: block; height: 2px; background: var(--color-text); border-radius: 2px"></span>
+      </button>
+      <nav data-nav data-open="0" style="margin-left: auto; display: flex; align-items: center; flex-wrap: wrap; gap: 18px; font-size: 14px; font-weight: 600; letter-spacing: 0.01em">
+        <a href="#radovi" style="color: var(--color-neutral-800)">Galerija</a>
+        <a href="#o-meni" style="color: var(--color-neutral-800)">O meni</a>
+        <a href="#porudzbine" class="btn btn-primary" style="font-size: 14px; padding: 9px 18px; color: #fff; white-space: nowrap">Poruči portret</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="pocetak" style="max-width: 1180px; margin: 0 auto; padding: 64px 24px 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 64px; align-items: center">
+    <div>
+      <span class="tag tag-accent-2">Dobrodošli</span>
+      <h1 style="font-size: clamp(40px, 4.4vw, 62px); margin: 24px 0 0; max-width: none; white-space: nowrap">Til kao platno,<br data-mbr>igla kao četkica</h1>
+      <p style="margin-top: 26px; font-size: 20px; line-height: 1.6; max-width: 46ch; color: var(--color-neutral-800)">Svaki portret nastaje potpuno ručno, bod po bod, direktno na finom belom tilu. Čista igra crnog konca, svetlosti i strpljenja koja stvara živu iluziju u vazduhu.</p>
+      <p style="margin-top: 18px; font-size: 20px; line-height: 1.6; max-width: 46ch; color: var(--color-neutral-800)">Pored prepoznatljivih portreta poznatih ličnosti, radim i portrete po narudžbini, pretvarajući lice koje izabereš u jedinstveno umetničko delo.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px">
+        <a href="#radovi" class="btn btn-primary" style="color: #fff; white-space: nowrap">Pogledaj radove</a>
+        <a href="#o-meni" class="btn btn-secondary" style="white-space: nowrap">O meni</a>
+      </div>
+      <div data-stats style="display: flex; align-items: stretch; gap: 32px; margin-top: 56px; padding: 24px 30px; background: var(--color-surface); border-radius: var(--radius-lg); width: fit-content; flex-wrap: wrap">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <div style="font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 34px; line-height: 1; color: var(--color-accent-700)">1</div>
+          <div style="font-size: 14px; line-height: 1.4; color: var(--color-neutral-700)">unikat</div>
+        </div>
+        <div style="width: 1px; background: var(--color-divider)"></div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <div style="font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 34px; line-height: 1; color: var(--color-accent-700)">1–2</div>
+          <div style="font-size: 14px; line-height: 1.4; color: var(--color-neutral-700)">nedelje<br>posvećenosti</div>
+        </div>
+        <div style="width: 1px; background: var(--color-divider)"></div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <div style="font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 34px; line-height: 1; color: var(--color-accent-700)">0</div>
+          <div style="font-size: 14px; line-height: 1.4; color: var(--color-neutral-700)">mašinskih<br>šavova</div>
+        </div>
+      </div>
+    </div>
+    <div style="position: relative; justify-self: end; width: 100%; max-width: 460px">
+      <div style="position: absolute; inset: -26px -26px auto auto; width: 300px; height: 300px; border-radius: 999px; background: var(--color-accent-2-200); z-index: 0"></div>
+      <div data-krug style="position: absolute; z-index: 2; left: -54px; bottom: -34px; width: 128px; height: 128px; border-radius: 999px; background: var(--color-accent-2-500)"></div>
+      <div class="washed" data-zoom style="position: relative; z-index: 1; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); cursor: zoom-in">
+        <image-slot id="vez-hero" shape="rect" fit="cover" placeholder="Fotografija najlepšeg rada (vertikalno)" style="width: 100%; height: 520px"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <section id="radovi" style="background: var(--color-surface); padding: 96px 0">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 0 32px">
+      <span class="tag tag-outline">Galerija</span>
+      <h2 style="font-size: clamp(34px, 4.4vw, 58px); margin: 20px 0 0">Radovi</h2>
+      <p style="margin-top: 18px; font-size: 18px; line-height: 1.6; max-width: 52ch; color: var(--color-neutral-800)">Galerija unikatnih portreta na tilu. Svaki komad je autentičan rad nastao isključivo ručno, noseći sopstvenu, neponovljivu energiju.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 48px; margin-top: 56px; align-items: start">
+        <article style="display: flex; flex-direction: column; gap: 16px">
+          <div class="washed" data-zoom style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); cursor: zoom-in">
+            <image-slot id="vez-rad-1" shape="rect" fit="contain" placeholder="Dragan Nikolić" style="width: 100%; height: 380px"></image-slot>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 12px">
+            <h3 style="font-size: 24px">Dragan Nikolić</h3>
+            <span class="tag" style="margin-left: auto; background: var(--color-accent-2-500); border-color: var(--color-accent-2-500); color: #fff">dostupno</span>
+          </div>
+          <p style="font-size: 15px; line-height: 1.6; color: var(--color-neutral-700)">Vez na belom tilu, prečnik 25 cm, u drvenom obruču.</p>
+        </article>
+
+        <article style="display: flex; flex-direction: column; gap: 16px">
+          <div class="washed" data-zoom style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); cursor: zoom-in">
+            <image-slot id="vez-rad-2" shape="rect" fit="contain" placeholder="Dino Dvornik" style="width: 100%; height: 380px"></image-slot>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 12px">
+            <h3 style="font-size: 24px">Dino Dvornik</h3>
+            <span class="tag" style="margin-left: auto; background: var(--color-accent-2-500); border-color: var(--color-accent-2-500); color: #fff">dostupno</span>
+          </div>
+          <p style="font-size: 15px; line-height: 1.6; color: var(--color-neutral-700)">Vez na belom tilu, prečnik 25 cm, u drvenom obruču.</p>
+        </article>
+
+        <article style="display: flex; flex-direction: column; gap: 16px">
+          <div class="washed" data-zoom style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); cursor: zoom-in">
+            <image-slot id="vez-rad-3" shape="rect" fit="contain" placeholder="Freddie Mercury" style="width: 100%; height: 380px"></image-slot>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 12px">
+            <h3 style="font-size: 24px">Freddie Mercury</h3>
+            <span class="tag" style="margin-left: auto; background: var(--color-accent-300); border-color: var(--color-accent-300); color: var(--color-accent-900)">prodato</span>
+          </div>
+          <p style="font-size: 15px; line-height: 1.6; color: var(--color-neutral-700)">Vez na belom tilu, prečnik 25 cm, u drvenom obruču.</p>
+        </article>
+
+        <article style="display: flex; flex-direction: column; gap: 16px">
+          <div class="washed" data-zoom style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); cursor: zoom-in">
+            <image-slot id="vez-rad-4" shape="rect" fit="contain" placeholder="Joker" style="width: 100%; height: 380px"></image-slot>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 12px">
+            <h3 style="font-size: 24px">Joker</h3>
+            <span class="tag" style="margin-left: auto; background: var(--color-accent-2-500); border-color: var(--color-accent-2-500); color: #fff">dostupno</span>
+          </div>
+          <p style="font-size: 15px; line-height: 1.6; color: var(--color-neutral-700)">Vez na belom tilu, prečnik 25 cm, u drvenom obruču.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="o-meni" style="max-width: 1180px; margin: 0 auto; padding: 104px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 72px; align-items: center">
+    <div style="position: relative">
+      <div style="position: absolute; inset: auto auto -30px -30px; width: 210px; height: 210px; border-radius: 999px; background: var(--color-accent-200); z-index: 0"></div>
+      <div style="position: absolute; inset: -24px -24px auto auto; width: 190px; height: 190px; border-radius: 999px; background: var(--color-accent-2-200); z-index: 0"></div>
+      <div class="washed" style="position: relative; z-index: 1; border-radius: 999px; overflow: hidden; box-shadow: var(--shadow-md); aspect-ratio: 1 / 1">
+        <image-slot id="vez-o-meni" shape="circle" fit="cover" placeholder="Ti za razbojem ili detalj ruku" style="width: 100%; height: 100%"></image-slot>
+      </div>
+    </div>
+    <div>
+      <span class="tag tag-outline">O meni</span>
+      <h2 style="font-size: clamp(34px, 4.4vw, 58px); margin: 20px 0 0; max-width: 18ch">Vez<span style="font-family: 'Lora', Georgia, serif; font-weight: 700; color: var(--color-accent)">i</span>lica</h2>
+      <p style="margin-top: 24px; font-size: 19px; line-height: 1.7; color: var(--color-neutral-800)">Ja sam Ivana, grafički dizajner po struci, a Vezilica je moj kreativni svet i mesto gde moje skice i vizije oživljavaju na sasvim novom materijalu. Za mene je vez mnogo više od ručnog rada – on je prava umetnost i moj omiljeni beg od brze, stresne svakodnevice.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px">
+        <span class="tag tag-neutral">vez</span>
+        <span class="tag tag-neutral">ručni vez</span>
+        <span class="tag tag-neutral">unikat</span>
+        <span class="tag tag-neutral">til</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="porudzbine" style="max-width: 1180px; margin: 0 auto; padding: 0 32px 104px">
+    <div style="background: var(--color-surface); border-radius: var(--radius-lg); padding: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 48px; align-items: center">
+      <div>
+        <span class="tag tag-accent">Vez po želji</span>
+        <h2 style="font-size: clamp(30px, 3.4vw, 46px); margin: 20px 0 0; max-width: 20ch">Vezem i lice koje<br>ti izabereš :)</h2>
+        <p style="margin-top: 22px; font-size: 18px; line-height: 1.7; color: var(--color-neutral-800); max-width: 46ch">Imaš lice koje te inspiriše, dragu osobu čiji portret želiš da sačuvaš od zaborava, ili želiš da omiljena ikona pop kulture ukrasi tvoj prostor? Pošalji mi fotografiju po izboru, a ja ću je, strpljivim radom i iglom u ruci, pretvoriti u neponovljivi unikat na prozirnom tilu.</p>
+        <a href="#narucivanje" class="btn btn-primary" style="color: #fff; white-space: nowrap; margin-top: 30px">Poruči portret</a>
+      </div>
+      <div class="washed" data-zoom style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); cursor: zoom-in">
+        <image-slot id="vez-porudzbina" shape="rect" fit="cover" placeholder="Rad po porudžbini ili vez u obruču u toku" style="width: 100%; height: 400px"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <section id="narucivanje" style="background: var(--color-accent-2-800); color: var(--color-neutral-100); padding: 100px 0">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 0 32px">
+      <span class="tag" style="background: color-mix(in srgb, var(--color-accent-2-100) 18%, transparent); color: var(--color-accent-2-200); border-color: transparent">Naručivanje i cene</span>
+      <h2 style="font-size: clamp(34px, 4.4vw, 58px); margin: 20px 0 0; color: var(--color-neutral-100); max-width: 24ch">Od fotografije do unikatnog poklona, u četiri koraka</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 72px; margin-top: 56px; align-items: stretch">
+        <div style="display: grid; gap: 30px; align-content: space-between">
+          <div style="display: flex; gap: 20px; align-items: flex-start">
+            <div style="flex: 0 0 auto; width: 46px; height: 46px; border-radius: 999px; background: var(--color-accent-500); color: #fff; display: grid; place-items: center; font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 17px">01</div>
+            <div>
+              <h3 style="font-size: 22px; color: var(--color-neutral-100)">Fotografija</h3>
+              <p style="margin-top: 8px; font-size: 17px; line-height: 1.65; color: var(--color-accent-2-200)">Šaljete sliku. Biram je zajedno s vama — jasno lice i mekana svetlost daju najbolji vez.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 20px; align-items: flex-start">
+            <div style="flex: 0 0 auto; width: 46px; height: 46px; border-radius: 999px; background: var(--color-accent-500); color: #fff; display: grid; place-items: center; font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 17px">02</div>
+            <div>
+              <h3 style="font-size: 22px; color: var(--color-neutral-100)">Crtež</h3>
+              <p style="margin-top: 8px; font-size: 17px; line-height: 1.65; color: var(--color-accent-2-200)">Pravim skicu i prenosim na materijal. Til trpi samo ono najvažnije, pa se višak izostavlja.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 20px; align-items: flex-start">
+            <div style="flex: 0 0 auto; width: 46px; height: 46px; border-radius: 999px; background: var(--color-accent-500); color: #fff; display: grid; place-items: center; font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 17px">03</div>
+            <div>
+              <h3 style="font-size: 22px; color: var(--color-neutral-100)">Vez</h3>
+              <p style="margin-top: 8px; font-size: 17px; line-height: 1.65; color: var(--color-accent-2-200)">Bod po bod, rukom, na đerđefu.<br>Rad nastaje polako i strpljivo.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 20px; align-items: flex-start">
+            <div style="flex: 0 0 auto; width: 46px; height: 46px; border-radius: 999px; background: var(--color-accent-500); color: #fff; display: grid; place-items: center; font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 17px">04</div>
+            <div>
+              <h3 style="font-size: 22px; color: var(--color-neutral-100)">Pakovanje</h3>
+              <p style="margin-top: 8px; font-size: 17px; line-height: 1.65; color: var(--color-accent-2-200)">Delo je uokvireno i ušuškano u kutiju, spremno da stigne na tvoju adresu.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="position: relative; display: grid; gap: 20px">
+          <div style="position: absolute; inset: -26px -26px auto auto; width: 190px; height: 190px; border-radius: 999px; background: var(--color-accent-2-200); z-index: 0"></div>
+          <div style="position: relative; z-index: 1; background: var(--color-bg); color: var(--color-text); border-radius: var(--radius-lg); padding: 34px; box-shadow: var(--shadow-lg); height: 100%; display: flex; flex-direction: column">
+            <h3 style="font-size: 24px">Izaberi format</h3>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 16px">
+              <button type="button" data-fmt data-value="Mali — prečnik 20 cm" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; text-align: left; cursor: pointer; font: inherit; font-size: 15px; padding: 12px 18px; border-radius: 999px; transition: background 120ms ease, border-color 120ms ease; background: transparent; border: 1px solid var(--color-divider); color: var(--color-text)">
+                <span style="text-align: left">
+                  <span style="display: block; font-weight: 600">Mali — prečnik 20 cm</span>
+                  <span style="display: block; font-size: 13px; margin-top: 2px">manje detalja</span>
+                </span>
+                <span style="font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 18px; white-space: nowrap">5000 RSD</span>
+              </button>
+              <button type="button" data-fmt data-value="Veliki — prečnik 25 cm" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; text-align: left; cursor: pointer; font: inherit; font-size: 15px; padding: 12px 18px; border-radius: 999px; transition: background 120ms ease, border-color 120ms ease; background: transparent; border: 1px solid var(--color-divider); color: var(--color-text)">
+                <span style="text-align: left">
+                  <span style="display: block; font-weight: 600">Veliki — prečnik 25 cm</span>
+                  <span style="display: block; font-size: 13px; margin-top: 2px">više detalja i boje</span>
+                </span>
+                <span style="font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 18px; white-space: nowrap">8000 RSD</span>
+              </button>
+            </div>
+
+            <form action="https://formsubmit.co/vujovic.sk@gmail.com" method="POST" enctype="multipart/form-data" style="display: grid; gap: 16px; margin-top: 26px">
+              <input type="hidden" name="_subject" value="Narudžbina portreta — Vezilica">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="Format" id="vez-format" value="nije izabran">
+              <div class="field"><label for="vez-ime">Ime i prezime</label><input class="input" id="vez-ime" name="Ime i prezime" type="text" required placeholder="npr. Ivana Ivanović"></div>
+              <div class="field"><label for="vez-mejl">Imejl</label><input class="input" id="vez-mejl" name="email" type="email" required placeholder="npr. ime@primer.com"></div>
+              <div class="field"><label for="vez-poruka">Poruka</label><input class="input" id="vez-poruka" name="Poruka" type="text" placeholder="koje lice želiš, boja tila, rok…"></div>
+              <label for="vez-foto" class="btn btn-secondary btn-block" style="cursor: pointer; white-space: nowrap">Priloži fotografiju</label>
+              <input id="vez-foto" name="Fotografija" type="file" accept="image/*" style="display: none">
+              <button type="submit" class="btn btn-primary btn-block" style="color: #fff; white-space: nowrap">Pošalji upit</button>
+            </form>
+
+            <p style="margin-top: auto; padding-top: 18px; font-size: 14px; line-height: 1.6; color: var(--color-neutral-700)">Ram je uračunat. Poštarina se plaća posebno.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer" style="background: var(--color-surface); border-top: 1px solid var(--color-divider)">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 52px 32px 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; align-items: start; justify-items: center">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; align-items: center; gap: 10px">
+          <img src="assets/vezilica-logo.png" alt="Vezilica" style="height: 46px; width: auto; margin-left: -7px">
+          <span style="font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 20px; color: var(--color-text)">Vez<span style="font-family: 'Lora', Georgia, serif; font-weight: 700; color: var(--color-accent)">i</span>lica</span>
+        </div>
+        <p style="font-size: 15px; line-height: 1.6; color: var(--color-neutral-700); max-width: 30ch">Ručni vez portreta na tilu.<br>Svaki rad je unikat.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <p style="font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 17px">Kontakt</p>
+        <a href="https://instagram.com/vezilica_" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--color-text)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width: 19px; height: 19px; flex: 0 0 auto"><rect x="2" y="2" width="20" height="20" rx="6"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1.1" fill="var(--color-accent-700)" stroke="none"></circle></svg>
+          <span>@vezilica_</span>
+        </a>
+        <a href="mailto:vezilica10@gmail.com" style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--color-text)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width: 19px; height: 19px; flex: 0 0 auto"><rect x="2.5" y="4.5" width="19" height="15" rx="3.5"></rect><path d="M3.5 7.5l8.5 6 8.5-6"></path></svg>
+          <span>vezilica10@gmail.com</span>
+        </a>
+        <a href="tel:+381651234567" style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--color-text)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width: 19px; height: 19px; flex: 0 0 auto"><path d="M6.2 3.5h3l1.6 4-2 1.4a11 11 0 0 0 5.3 5.3l1.4-2 4 1.6v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.2 5.7 2 2 0 0 1 6.2 3.5z"></path></svg>
+          <span>+381 65 123 4567</span>
+        </a>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <p style="font-family: 'Lora', Georgia, serif; font-weight: 700; font-size: 17px">Navigacija</p>
+        <a href="#radovi" style="font-size: 15px; color: var(--color-text)">Galerija</a>
+        <a href="#o-meni" style="font-size: 15px; color: var(--color-text)">O meni</a>
+        <a href="#porudzbine" style="font-size: 15px; color: var(--color-text)">Vez po želji</a>
+      </div>
+    </div>
+    <div style="max-width: 1180px; margin: 0 auto; padding: 0 32px 34px">
+      <p style="padding-top: 22px; border-top: 1px solid var(--color-divider); font-size: 14px; color: var(--color-neutral-700)">© Vezilica · Srbija</p>
+    </div>
+  </footer>
+</div>
+
+<div data-lightbox hidden style="position: fixed; inset: 0; z-index: 60; background: color-mix(in srgb, var(--color-neutral-900) 88%, transparent); display: grid; place-items: center; padding: 40px; cursor: zoom-out">
+  <img alt="" style="max-width: 92vw; max-height: 88vh; width: auto; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)">
+  <button type="button" data-close class="btn btn-primary" style="position: fixed; top: 24px; right: 24px; color: #fff; white-space: nowrap">Zatvori</button>
+</div>
+
+<script src="image-slot.js"></script>
+<script>
+(function () {
+  var burger = document.querySelector('[data-burger]');
+  var nav = document.querySelector('[data-nav]');
+  burger.addEventListener('click', function () {
+    nav.setAttribute('data-open', nav.getAttribute('data-open') === '1' ? '0' : '1');
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.closest('a')) nav.setAttribute('data-open', '0');
+  });
+
+  var polje = document.getElementById('vez-format');
+  document.querySelectorAll('[data-fmt]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('[data-fmt]').forEach(function (o) {
+        o.style.background = 'transparent';
+        o.style.borderColor = 'var(--color-divider)';
+        o.style.color = 'var(--color-text)';
+      });
+      b.style.background = 'var(--color-accent-500)';
+      b.style.borderColor = 'var(--color-accent-500)';
+      b.style.color = '#fff';
+      polje.value = b.getAttribute('data-value');
+    });
+  });
+
+  var foto = document.getElementById('vez-foto');
+  var natpis = document.querySelector('label[for="vez-foto"]');
+  foto.addEventListener('change', function () {
+    natpis.textContent = foto.files && foto.files[0] ? foto.files[0].name : 'Priloži fotografiju';
+  });
+
+  var box = document.querySelector('[data-lightbox]');
+  var velika = box.querySelector('img');
+  function zatvori() { box.hidden = true; velika.removeAttribute('src'); }
+  document.querySelectorAll('[data-zoom]').forEach(function (w) {
+    w.addEventListener('click', function () {
+      var slot = w.querySelector('image-slot');
+      var img = slot && slot.shadowRoot && slot.shadowRoot.querySelector('img[part=image]');
+      if (img && img.getAttribute('src')) { velika.src = img.src; box.hidden = false; }
+    });
+  });
+  box.addEventListener('click', zatvori);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zatvori(); });
+})();
+</script>
+</body>
+</html>
